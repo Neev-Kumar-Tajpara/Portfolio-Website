@@ -9,9 +9,9 @@ Institutional-grade portfolio infrastructure for Neev Kumar Tajpara. Built with 
 Create a file named `.env.local` in the root directory (do not commit this file).
 
 ```env
-GITHUB_TOKEN=your_github_personal_access_token
-NEXT_PUBLIC_GITHUB_USERNAME=neevtajpara
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+GITHUB_TOKEN=
+NEXT_PUBLIC_GITHUB_USERNAME=
+NEXT_PUBLIC_APP_URL=
 ```
 
 *   **GITHUB_TOKEN**: Generate a [Personal Access Token (Classic)](https://github.com/settings/tokens).
