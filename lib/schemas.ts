@@ -5,7 +5,7 @@ export const RepositorySchema = z.object({
     name: z.string(),
     description: z.string().nullable().optional(),
     html_url: z.string().url(),
-    homepage: z.string().url().nullable().optional(),
+    homepage: z.string().nullable().optional(),
     topics: z.array(z.string()).default([]),
     stargazers_count: z.number(),
     language: z.string().nullable().optional(),
