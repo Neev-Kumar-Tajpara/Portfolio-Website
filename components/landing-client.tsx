@@ -4,12 +4,15 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 
+import { Repository } from '@/lib/schemas';
+
 interface LandingClientProps {
     projectsCount: number | string;
     researchCount: number | string;
+    researchRepos: Repository[];
 }
 
-export function LandingClient({ projectsCount, researchCount }: LandingClientProps) {
+export function LandingClient({ projectsCount, researchCount, researchRepos }: LandingClientProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -96,7 +99,7 @@ export function LandingClient({ projectsCount, researchCount }: LandingClientPro
                                 transition={{ duration: 0.6 }}
                                 className="font-sans font-bold text-6xl md:text-8xl leading-[0.9] tracking-tight uppercase mb-8 text-black"
                             >
-                                Alpha Decay<br />in HFT<br />Environments.
+                                VOLATILITY,<br />RISK &<br />REGIME STRUCTURE.
                             </motion.h2>
                             <div className="h-2 w-24 bg-black mb-8"></div>
                         </div>
@@ -145,62 +148,28 @@ export function LandingClient({ projectsCount, researchCount }: LandingClientPro
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-grid-line border border-grid-line">
-                        {[
-                            { id: "01", year: "2023", title: "Market Microstructure", desc: "Analyzing order book imbalances and their predictive power on short-term price movements." },
-                            { id: "02", year: "2024", title: "Statistical Arbitrage", desc: "Mean reversion strategies in high-volatility regimes: A study on covariance matrix stability." },
-                            { id: "03", year: "2024", title: "Latency Optimization", desc: "FPGA-based execution systems reducing tick-to-trade latency to sub-microsecond levels." }
-                        ].map((item, idx) => (
-                            <Link href="/research" key={idx} className="bg-background p-8 md:p-10 group hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer h-full flex flex-col justify-between">
-                                <div>
-                                    <div className="font-mono text-xs text-primary group-hover:text-black mb-4 uppercase flex justify-between">
-                                        <span>Paper_{item.id}</span>
-                                        <span>{item.year}</span>
+                        {researchRepos.slice(0, 6).map((repo, idx) => (
+                            <div key={repo.id} className="bg-background p-8 md:p-10 group hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer h-full flex flex-col justify-between">
+                                <Link href={repo.html_url} target="_blank" className="h-full flex flex-col justify-between">
+                                    <div>
+                                        <div className="font-mono text-xs text-primary group-hover:text-black mb-4 uppercase flex justify-between">
+                                            <span>Paper_{String(idx + 1).padStart(2, '0')}</span>
+                                            <span>{repo.pushed_at ? new Date(repo.pushed_at).getFullYear() : '2024'}</span>
+                                        </div>
+                                        <h4 className="text-3xl font-sans font-bold uppercase leading-none mb-4 group-hover:translate-x-2 transition-transform duration-300 break-words">
+                                            {repo.name.replace(/-/g, ' ')}
+                                        </h4>
+                                        <p className="font-mono text-xs text-gray-500 group-hover:text-black/70 mt-4 leading-relaxed line-clamp-4">
+                                            {repo.description || "No description available."}
+                                        </p>
                                     </div>
-                                    <h4 className="text-3xl font-sans font-bold uppercase leading-none mb-4 group-hover:translate-x-2 transition-transform duration-300">
-                                        {item.title.split(' ').map((word, i) => <span key={i}>{word}<br /></span>)}
-                                    </h4>
-                                    <p className="font-mono text-xs text-gray-500 group-hover:text-black/70 mt-4 leading-relaxed">
-                                        {item.desc}
-                                    </p>
-                                </div>
-                                <div className="mt-12 flex justify-between items-center border-t border-grid-line group-hover:border-black pt-4">
-                                    <span className="font-mono text-xs uppercase">Read PDF</span>
-                                    <span className="text-sm transform group-hover:rotate-45 transition-transform">↗</span>
-                                </div>
-                            </Link>
+                                    <div className="mt-12 flex justify-between items-center border-t border-grid-line group-hover:border-black pt-4">
+                                        <span className="font-mono text-xs uppercase">View Code</span>
+                                        <span className="text-sm transform group-hover:rotate-45 transition-transform">↗</span>
+                                    </div>
+                                </Link>
+                            </div>
                         ))}
-
-                        {/* Visual Card */}
-                        <div className="bg-background p-0 md:col-span-2 relative overflow-hidden group min-h-[400px]">
-                            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-                            <div className="absolute bottom-0 left-0 p-8 w-full z-20">
-                                <h4 className="text-2xl font-sans font-bold uppercase text-white">Visualizing Dark Pools</h4>
-                            </div>
-                            {/* Placeholder for complex visual - using CSS pattern for now */}
-                            <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black" />
-                            <div className="absolute inset-0 opacity-20">
-                                <div className="w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]" />
-                            </div>
-                        </div>
-
-                        <Link href="/research" className="bg-background p-8 md:p-10 group hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer h-full flex flex-col justify-between">
-                            <div>
-                                <div className="font-mono text-xs text-primary group-hover:text-black mb-4 uppercase flex justify-between">
-                                    <span>Paper_04</span>
-                                    <span>In Review</span>
-                                </div>
-                                <h4 className="text-3xl font-sans font-bold uppercase leading-none mb-4 group-hover:translate-x-2 transition-transform duration-300">
-                                    Stochastic<br />Volatility
-                                </h4>
-                                <p className="font-mono text-xs text-gray-500 group-hover:text-black/70 mt-4 leading-relaxed">
-                                    Implied volatility surfaces and their decay rates post-earnings announcements.
-                                </p>
-                            </div>
-                            <div className="mt-12 flex justify-between items-center border-t border-grid-line group-hover:border-black pt-4">
-                                <span className="font-mono text-xs uppercase">Read PDF</span>
-                                <span className="text-sm transform group-hover:rotate-45 transition-transform">↗</span>
-                            </div>
-                        </Link>
                     </div>
                 </div>
             </section>

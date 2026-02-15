@@ -9,5 +9,5 @@ export default async function Home() {
     getResearchRepositories()
   ]);
 
-  return <LandingClient projectsCount={projects.length} researchCount={research.length} />;
+  return <LandingClient projectsCount={projects.length} researchCount={research.length} researchRepos={research} />;
 }
