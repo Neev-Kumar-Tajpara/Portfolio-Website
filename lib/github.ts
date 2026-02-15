@@ -13,7 +13,8 @@ const octokit = new Octokit({
 // Actually, `octokit.request` uses `fetch` internally in modern versions.
 // We can pass `request: { fetch }` to use Next.js patched fetch.
 
-export async function getPinnedRepositories(): Promise<Repository[]> {
+// Helper to get all relevant project repos without slicing
+export async function getAllProjectRepositories(): Promise<Repository[]> {
     const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "neevtajpara";
 
     try {
@@ -30,7 +31,6 @@ export async function getPinnedRepositories(): Promise<Repository[]> {
             }
         });
 
-        // Topics for Projects (exclude 'research' specific ones if needed, or just include general tech)
         const projectTopics = [
             "quant", "finance", "ml", "trading", "risk", "systematic",
             "math", "algorithm", "hft", "options", "derivatives", "stochastic",
@@ -48,12 +48,16 @@ export async function getPinnedRepositories(): Promise<Repository[]> {
                 const result = RepositorySchema.safeParse(repo);
                 return result.success ? result.data : null;
             })
-            .filter((repo): repo is Repository => repo !== null)
-            .slice(0, 6);
+            .filter((repo): repo is Repository => repo !== null);
     } catch (error) {
         console.error("GitHub API Error:", error);
         return [];
     }
+}
+
+export async function getPinnedRepositories(): Promise<Repository[]> {
+    const allProjects = await getAllProjectRepositories();
+    return allProjects.slice(0, 6);
 }
 
 export async function getResearchRepositories(): Promise<Repository[]> {
