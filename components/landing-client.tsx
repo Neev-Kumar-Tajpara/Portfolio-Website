@@ -10,9 +10,10 @@ interface LandingClientProps {
     projectsCount: number | string;
     researchCount: number | string;
     researchRepos: Repository[];
+    projectRepos: Repository[];
 }
 
-export function LandingClient({ projectsCount, researchCount, researchRepos }: LandingClientProps) {
+export function LandingClient({ projectsCount, researchCount, researchRepos, projectRepos }: LandingClientProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -174,66 +175,45 @@ export function LandingClient({ projectsCount, researchCount, researchRepos }: L
                 </div>
             </section>
 
-            {/* SECTION 4: INFRASTRUCTURE MAP */}
+            {/* SECTION 4: PROJECTS GRID (Formerly Infrastructure) */}
             <section className="bg-background py-24 border-b border-grid-line">
                 <div className="px-6 md:px-12 max-w-[1920px] mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="order-2 lg:order-1 relative border border-grid-line p-1 h-[400px] bg-black overflow-hidden relative">
-                            {/* Abstract Map Representation */}
-                            <div className="absolute inset-0 bg-[radial-gradient(#333_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-grid-line pb-8">
+                        <h3 className="text-4xl md:text-6xl font-sans font-bold uppercase tracking-tight text-white">Projects<span className="text-primary">.</span></h3>
+                        <Link href="/projects" className="font-mono text-data-blue text-sm uppercase mt-4 md:mt-0 hover:underline decoration-data-blue underline-offset-4">[ Index_04 :: Systematic Systems ]</Link>
+                    </div>
 
-                            {/* Pinging Nodes */}
-                            <div className="absolute top-[30%] left-[25%]">
-                                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                            </div>
-                            <div className="absolute top-[25%] left-[48%]">
-                                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping delay-700"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                            </div>
-                            <div className="absolute top-[35%] left-[80%]">
-                                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping delay-1000"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                            </div>
-
-                            <div className="absolute bottom-4 left-4 font-mono text-xs text-primary bg-black/80 px-2 py-1 border border-grid-line">
-                                Latency Map // Live
-                            </div>
-                        </div>
-
-                        <div className="order-1 lg:order-2 font-mono">
-                            <h3 className="text-2xl text-white uppercase mb-8 pb-4 border-b border-grid-line flex justify-between items-center">
-                                Infrastructure <span className="text-data-blue text-sm">[ Co-Location ]</span>
-                            </h3>
-                            <div className="space-y-6">
-                                {[
-                                    { loc: "NY4 (New York)", lat: "< 12μs", width: "95%" },
-                                    { loc: "LD4 (London)", lat: "< 18μs", width: "85%" },
-                                    { loc: "TY3 (Tokyo)", lat: "< 24μs", width: "70%" },
-                                ].map((loc, idx) => (
-                                    <div key={idx} className="group cursor-default">
-                                        <div className="flex justify-between text-sm text-gray-400 mb-1 group-hover:text-primary transition-colors">
-                                            <span>{loc.loc}</span>
-                                            <span>{loc.lat}</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-grid-line border border-grid-line">
+                        {projectRepos.slice(0, 6).map((repo, idx) => (
+                            <div key={repo.id} className="bg-background p-8 md:p-10 group hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer h-full flex flex-col justify-between">
+                                <Link href={repo.html_url} target="_blank" className="h-full flex flex-col justify-between">
+                                    <div>
+                                        <div className="font-mono text-xs text-primary group-hover:text-black mb-4 uppercase flex justify-between">
+                                            <span>Sys_{String(idx + 1).padStart(2, '0')}</span>
+                                            <span>{repo.language || 'N/A'}</span>
                                         </div>
-                                        <div className="w-full h-1 bg-grid-line">
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                whileInView={{ width: loc.width }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 1, delay: 0.2 * idx }}
-                                                className="h-full bg-primary"
-                                            />
+                                        <h4 className="text-2xl font-sans font-bold uppercase leading-none mb-4 group-hover:translate-x-2 transition-transform duration-300 break-words">
+                                            {repo.name.replace(/-/g, ' ')}
+                                        </h4>
+                                        <p className="font-mono text-xs text-gray-500 group-hover:text-black/70 mt-4 leading-relaxed line-clamp-3">
+                                            {repo.description || "System architecture and implementation details."}
+                                        </p>
+                                        {/* Tags */}
+                                        <div className="flex flex-wrap gap-2 mt-4">
+                                            {repo.topics.slice(0, 3).map(topic => (
+                                                <span key={topic} className="text-[10px] font-mono border border-grid-line px-1 py-0.5 group-hover:border-black/20 text-gray-400 group-hover:text-black/60">
+                                                    #{topic}
+                                                </span>
+                                            ))}
                                         </div>
                                     </div>
-                                ))}
+                                    <div className="mt-8 flex justify-between items-center border-t border-grid-line group-hover:border-black pt-4">
+                                        <span className="font-mono text-xs uppercase">View Repository</span>
+                                        <span className="text-sm transform group-hover:rotate-45 transition-transform">↗</span>
+                                    </div>
+                                </Link>
                             </div>
-
-                            <div className="mt-12 p-4 border border-dashed border-grid-line bg-background text-xs text-gray-500">
-                                <span className="text-primary block mb-2">&gt; SYSTEM_MSG:</span>
-                                Redundancy protocols engaged. Microwave links active for critical paths. Direct market access established.
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
