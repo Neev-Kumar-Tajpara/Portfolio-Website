@@ -30,7 +30,7 @@ export default function Home() {
           >
             <div className="font-mono text-data-blue text-sm md:text-base mb-4 tracking-widest uppercase flex items-center gap-2">
               <span className="w-2 h-2 bg-data-blue animate-pulse rounded-full"></span>
-              Live Feed :: 40.7128° N, 74.0060° W
+              PHASE :: PROBABILITY & RISK FOUNDATIONS
             </div>
           </motion.div>
 
@@ -51,15 +51,15 @@ export default function Home() {
           >
             <div className="col-span-1 md:col-span-4 font-mono text-sm text-gray-400">
               <p className="uppercase mb-2 text-white">Definition_</p>
-              <p>Leveraging high-frequency data ingestion to identify ephemeral market inefficiencies. Execution at the speed of light.</p>
+              <p>Designing systematic trading systems grounded in probability, risk, and disciplined execution.<br />Focused on understanding drawdowns, regime shifts, and non-linear market behavior.</p>
             </div>
             <div className="col-span-1 md:col-span-4 font-mono text-sm text-gray-400">
               <p className="uppercase mb-2 text-white">Vector_</p>
-              <p>Quantitative Research & Engineering.<br />Algorithmic Liquidity Provision.<br />Statistical Arbitrage.</p>
+              <p>Probability & Statistics.<br />Volatility & Derivatives Modeling.<br />Systematic Strategy Design & Backtesting.</p>
             </div>
             <div className="col-span-1 md:col-span-4 flex justify-end items-end">
               <Link href="/projects" className="bg-white text-black font-mono font-bold uppercase text-sm px-8 py-4 hover:bg-primary hover:text-white transition-colors duration-200 w-full md:w-auto border border-white hover:border-primary">
-                Explore Systems -&gt;
+                Explore Progress -&gt;
               </Link>
             </div>
           </motion.div>
@@ -91,17 +91,29 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="font-sans font-bold text-6xl md:text-8xl leading-[0.9] tracking-tight uppercase mb-8 text-black"
               >
-                Alpha Decay<br />in HFT<br />Environments.
+                VOLATILITY,<br />RISK &<br />REGIME STRUCTURE.
               </motion.h2>
               <div className="h-2 w-24 bg-black mb-8"></div>
             </div>
             <div className="lg:col-span-5 flex flex-col justify-between">
               <div className="font-mono text-lg font-medium leading-relaxed border-l-2 border-black pl-6 text-black">
                 <p className="mb-6">
-                  We don't predict the future. We structure the present. By the time you read this sentence, our models have executed 4,000 trades based on microstructure anomalies invisible to the human eye.
+                  Markets are not random — they are conditional.
+                </p>
+                <p className="mb-6">
+                  My work focuses on understanding how volatility clusters, how drawdowns propagate, and how trading systems behave across structural regime shifts. Rather than chasing prediction, I study stability — stress-testing assumptions, modeling non-linearity, and building systems designed to survive uncertainty.
+                </p>
+                <p className="mb-6">
+                  The objective is disciplined, repeatable decision-making grounded in probability and risk.
+                </p>
+                <p className="mb-6">
+                  I am a Computer Science & Engineering student focused on building strong mathematical foundations in probability, statistics, and market modeling.
+                </p>
+                <p className="mb-6">
+                  My interests lie in systematic trading systems, volatility research, and risk-aware portfolio design. I prioritize process over prediction — studying how models behave under stress, across regimes, and through drawdowns.
                 </p>
                 <p>
-                  Neev operates at the intersection of rigorous mathematical theory and brutal hardware performance. We construct portfolios that thrive in chaos.
+                  Long-term, I aim to work at the intersection of derivatives, volatility, and quantitative research — where non-linear payoffs and structural risk matter most.
                 </p>
               </div>
               <div className="mt-12 grid grid-cols-2 gap-4 font-mono text-xs font-bold uppercase border-t border-black/30 pt-6 text-black">
