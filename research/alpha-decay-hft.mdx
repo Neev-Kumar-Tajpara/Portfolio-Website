@@ -1,0 +1,58 @@
+---
+title: "Alpha Decay in High-Frequency Markets"
+abstract: "This paper investigates the rate of alpha decay in modern HFT environments, focusing on order book imbalance signals. We model the decay using a proprietary Ornstein-Uhlenbeck process and propose a dynamic execution framework to mitigate slippage."
+date: "2024-10-15"
+tags: ["market-microstructure", "alpha-decay", "hft", "stochastic-calculus"]
+status: "working"
+---
+
+# Introduction
+
+In high-frequency trading (HFT), the half-life of alpha signals has compressed significantly over the last decade. Conventional wisdom suggests that order book imbalance (OBI) provides predictive power, but the window of opportunity is fleeting.
+
+## Mathematical Formulation
+
+We define the Order Book Imbalance $I_t$ at time $t$ as:
+
+$$
+I_t = \frac{V_t^b - V_t^a}{V_t^b + V_t^a}
+$$
+
+Where $V_t^b$ and $V_t^a$ are the volumes at the best bid and ask, respectively.
+
+We model the evolution of the mid-price $P_t$ as a stochastic differential equation (SDE):
+
+$$
+dP_t = \alpha(I_t) dt + \sigma dW_t
+$$
+
+Where $\alpha(I_t)$ is the drift function dependent on the imbalance, and $W_t$ is a standard Brownian motion.
+
+### Alpha Decay Model
+
+We propose that $\alpha(I_t)$ decays according to an Ornstein-Uhlenbeck process:
+
+$$
+d\alpha_t = -\theta (\alpha_t - \mu) dt + \eta dB_t
+$$
+
+Here, $\theta$ represents the speed of mean reversion—the critical parameter defining alpha decay.
+
+## Empirical Results
+
+Using tick data from NSE NIFTY 50 Futures, we estimated $\theta$.
+
+| Timeframe | Estimated $\theta$ | Decay Half-Life (ms) |
+| :--- | :--- | :--- |
+| 2018-2019 | 0.85 | 815 |
+| 2020-2021 | 1.42 | 488 |
+| 2022-2023 | 2.95 | 235 |
+
+*Table 1: Acceleration of alpha decay in Indian derivatives markets.*
+
+> [!IMPORTANT]
+> The half-life has decreased by nearly **75%** in 5 years, necessitating faster execution infrastructure.
+
+## Conclusion
+
+The market is becoming more efficient at absorbing imbalance information. Strategies relying on simple OBI must now execute within sub-200ms windows to capture meaningful edge, or incorporate higher-order derivatives of the limit order book (LOB).

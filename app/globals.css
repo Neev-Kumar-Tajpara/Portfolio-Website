@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  /* Institutional Dark Theme - Default */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  /* Muted Institutional Blue Accent */
+  --accent: #1e3a8a; 
+  --accent-foreground: #ffffff;
+  
+  --muted: #171717;
+  --muted-foreground: #a1a1aa;
+  
+  --border: #262626;
+  --input: #262626;
+  --ring: #1e3a8a;
+  
+  --radius: 0rem; /* Sharp corners for institutional look */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  @apply bg-background text-foreground antialiased selection:bg-accent selection:text-white;
+}
+
+/* Typography Overrides for Dark Mode */
+.prose {
+  @apply text-muted-foreground;
+}
+.prose h1, .prose h2, .prose h3, .prose h4, .prose strong {
+  @apply text-foreground font-medium tracking-tight;
+}
+.prose a {
+  @apply text-foreground underline decoration-muted-foreground/30 underline-offset-4 hover:decoration-accent transition-colors;
+}
+.prose code {
+  @apply text-accent font-mono bg-muted/50 px-1 py-0.5 rounded-none before:content-none after:content-none;
+}
