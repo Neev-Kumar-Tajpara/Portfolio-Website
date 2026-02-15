@@ -29,11 +29,11 @@ export function ProjectsClient({ repos }: ProjectsClientProps) {
                         animate={{ opacity: 1, x: 0 }}
                         className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold tracking-tight uppercase leading-[0.9]"
                     >
-                        PROJECTS
+                        PROJECTS<span className="text-primary">.</span>
                     </motion.h1>
                     <p className="font-mono text-muted-foreground text-sm md:text-base mt-2 max-w-xl">
-                // Open Source Financial Systems & Models. <br />
-                // Building the primitive layer for decentralized finance.
+                        // Systematic trading systems & quantitative models. <br />
+                        // Built with risk, discipline, and repeatability in mind.
                     </p>
                 </div>
             </section>
