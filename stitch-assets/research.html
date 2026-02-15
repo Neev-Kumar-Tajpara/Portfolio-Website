@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neev Quantitative Research Listing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- MathJax for rendering math formulas -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ff0080",
+              "background-light": "#f8f5f7",
+              "background-dark": "#230f19", // Theme default, but I will overlay Void Black per user request for sections
+              "void-black": "#050505",
+              "grid-grey": "#262626",
+              "clinical-white": "#FFFFFF",
+              "muted-grey": "#A1A1AA",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "mono": ["JetBrains Mono", "monospace"],
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            letterSpacing: {
+              "tighter": "-0.05em",
+              "tight": "-0.025em",
+              "wide": "0.025em",
+              "wider": "0.05em",
+              "widest": "0.1em",
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for terminal vibe */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff0080; 
+        }
+        
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(38, 38, 38, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(38, 38, 38, 0.3) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-clinical-white font-display min-h-screen selection:bg-primary selection:text-white">
+<!-- Overall container that enforces the dark theme specifics requested (Void Black overrides) -->
+<div class="relative w-full min-h-screen dark:bg-void-black flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 w-full border-b border-grid-grey backdrop-blur-md bg-white/50 dark:bg-void-black/80">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+<a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">
+                        NEEV <span class="text-muted-grey font-normal">/</span> RESEARCH
+                    </a>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-xs font-mono text-muted-grey hover:text-primary transition-colors uppercase tracking-wider" href="#">[ Index ]</a>
+<a class="text-xs font-mono text-muted-grey hover:text-primary transition-colors uppercase tracking-wider" href="#">[ Papers ]</a>
+<a class="text-xs font-mono text-muted-grey hover:text-primary transition-colors uppercase tracking-wider" href="#">[ Team ]</a>
+<a class="px-4 py-1.5 border border-grid-grey rounded-full text-xs font-mono uppercase hover:border-primary hover:text-primary hover:bg-primary/5 transition-all" href="#">
+                        Subscribe
+                    </a>
+</nav>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-16 px-6 border-b border-grid-grey">
+<!-- Abstract grid pattern background for header -->
+<div class="absolute inset-0 grid-bg opacity-20 pointer-events-none" data-alt="Abstract geometric grid pattern background"></div>
+<div class="max-w-7xl mx-auto relative z-10">
+<div class="flex flex-col items-start space-y-4">
+<span class="inline-block px-3 py-1 bg-grid-grey/30 border border-grid-grey rounded-full text-[10px] font-mono text-primary uppercase tracking-widest mb-2">
+                            Systematic Alpha Generation
+                        </span>
+<h1 class="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.9] max-w-4xl text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-gray-500">
+                            Quantitative<br/>Research Notes
+                        </h1>
+<p class="font-mono text-muted-grey text-sm md:text-base mt-4 max-w-2xl border-l-2 border-primary pl-4 py-1">
+                            Alpha Signals, Market Microstructure, &amp; Machine Learning. <br/>
+                            Deconstructing market inefficiencies through rigorous statistical analysis.
+                        </p>
+</div>
+</div>
+</section>
+<!-- Featured Analysis (The "Detail Preview") -->
+<section class="border-b border-grid-grey bg-grid-grey/5">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12">
+<!-- Left: Metadata -->
+<div class="lg:col-span-4 p-8 border-b lg:border-b-0 lg:border-r border-grid-grey flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center space-x-2 mb-6">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-xs font-mono text-primary uppercase tracking-wider">Featured Analysis</span>
+</div>
+<h2 class="text-3xl font-bold leading-tight mb-4">Stochastic Volatility Models in Crypto Markets</h2>
+<p class="text-muted-grey text-sm leading-relaxed mb-6">
+                                An examination of Heston-style volatility dynamics within high-frequency cryptocurrency order books. We propose a modified jump-diffusion process to account for flash crashes.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<a class="px-3 py-1 rounded-full border border-grid-grey text-[10px] font-mono uppercase text-muted-grey hover:border-primary hover:text-primary transition-colors" href="#">Stochastic Calculus</a>
+<a class="px-3 py-1 rounded-full border border-grid-grey text-[10px] font-mono uppercase text-muted-grey hover:border-primary hover:text-primary transition-colors" href="#">Crypto</a>
+</div>
+</div>
+<!-- Right: The "Academic Paper" Preview -->
+<div class="lg:col-span-8 p-8 lg:p-12 relative overflow-hidden bg-void-black">
+<div class="absolute top-0 right-0 p-4 opacity-50">
+<i class="font-mono text-xs text-muted-grey">FIG 1.1</i>
+</div>
+<!-- Math Content -->
+<div class="font-serif text-gray-300 space-y-6 max-w-3xl">
+<p class="text-sm md:text-base leading-loose">
+                                We define the price process \( S_t \) following a stochastic differential equation (SDE) under the risk-neutral measure \( \mathbb{Q} \):
+                            </p>
+<div class="my-8 p-6 border border-grid-grey bg-grid-grey/10 rounded overflow-x-auto">
+                                \[ 
+                                    \begin{align}
+                                    dS_t &amp;= \mu S_t dt + \sqrt{v_t} S_t dW_t^S \\
+                                    dv_t &amp;= \kappa (\theta - v_t) dt + \xi \sqrt{v_t} dW_t^v 
+                                    \end{align}
+                                \]
+                            </div>
+<p class="text-sm md:text-base leading-loose">
+                                Where \( dW_t^S \) and \( dW_t^v \) are Wiener processes with correlation \( \rho \). Our empirical results suggest that \( \rho \) approaches -0.8 during periods of high liquidation cascades, indicating a pronounced leverage effect tailored to DeFi protocols.
+                            </p>
+<div class="mt-8">
+<a class="inline-flex items-center text-primary hover:text-white transition-colors group font-mono text-sm uppercase tracking-wide" href="#">
+<span>Read Full Paper</span>
+<svg class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Grid Listing Section -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+<div class="flex items-end justify-between mb-10 pb-4 border-b border-grid-grey">
+<h3 class="text-xl font-mono uppercase tracking-wide text-white">Latest Research</h3>
+<div class="flex items-center space-x-4">
+<span class="text-xs font-mono text-muted-grey">Sort by:</span>
+<select class="bg-transparent border-none text-xs font-mono text-primary uppercase focus:ring-0 cursor-pointer">
+<option>Date (Newest)</option>
+<option>Alpha Impact</option>
+<option>Relevance</option>
+</select>
+</div>
+</div>
+<!-- 3 Column Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-grid-grey border border-grid-grey">
+<!-- Card 1 -->
+<article class="group relative bg-void-black h-full hover:bg-grid-grey/10 transition-colors duration-300 p-8 flex flex-col justify-between gap-8">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-muted-grey">2024-10-14</span>
+<svg class="h-4 w-4 text-grid-grey group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Alpha Decay in HFT</h3>
+<p class="text-sm text-muted-grey line-clamp-3 leading-relaxed">
+                                Analyzing the half-life of order book imbalance signals across major equity exchanges. We demonstrate that signal efficacy has decreased by 40% over the last 24 months due to overcrowding.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Microstructure</span>
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Liquidity</span>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group relative bg-void-black h-full hover:bg-grid-grey/10 transition-colors duration-300 p-8 flex flex-col justify-between gap-8">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-muted-grey">2024-10-02</span>
+<svg class="h-4 w-4 text-grid-grey group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Transformer Models for Time-Series</h3>
+<p class="text-sm text-muted-grey line-clamp-3 leading-relaxed">
+                                Adapting attention mechanisms from NLP to multi-variate financial time series. A comparison against LSTM networks reveals superior performance in regime-change detection.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">ML</span>
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Deep Learning</span>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group relative bg-void-black h-full hover:bg-grid-grey/10 transition-colors duration-300 p-8 flex flex-col justify-between gap-8">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-muted-grey">2024-09-28</span>
+<svg class="h-4 w-4 text-grid-grey group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Mean Reversion Post-Mortem</h3>
+<p class="text-sm text-muted-grey line-clamp-3 leading-relaxed">
+                                A critical review of pairs trading strategies during the 2023 banking crisis. Why did statistical arbitrage break down, and how can we adjust Ornstein-Uhlenbeck parameters?
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Equities</span>
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Risk</span>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="group relative bg-void-black h-full hover:bg-grid-grey/10 transition-colors duration-300 p-8 flex flex-col justify-between gap-8">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-muted-grey">2024-09-15</span>
+<svg class="h-4 w-4 text-grid-grey group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Alternative Data: Satellite Imagery</h3>
+<p class="text-sm text-muted-grey line-clamp-3 leading-relaxed">
+                                Leveraging retail parking lot occupancy data derived from SAR satellite imagery to predict quarterly earnings for big-box retailers before consensus estimates.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Alt Data</span>
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Fundamental</span>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="group relative bg-void-black h-full hover:bg-grid-grey/10 transition-colors duration-300 p-8 flex flex-col justify-between gap-8">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-muted-grey">2024-09-01</span>
+<svg class="h-4 w-4 text-grid-grey group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Execution Algorithms in FX</h3>
+<p class="text-sm text-muted-grey line-clamp-3 leading-relaxed">
+                                Comparative study of VWAP vs TWAP execution in fragmented FX markets. We introduce a reinforcement learning agent that optimizes order slicing to minimize slippage.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Execution</span>
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Forex</span>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="group relative bg-void-black h-full hover:bg-grid-grey/10 transition-colors duration-300 p-8 flex flex-col justify-between gap-8">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-muted-grey">2024-08-22</span>
+<svg class="h-4 w-4 text-grid-grey group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Quantum Computing in Portfolio Opt</h3>
+<p class="text-sm text-muted-grey line-clamp-3 leading-relaxed">
+                                Exploring the theoretical advantages of Quantum Annealing for solving NP-hard portfolio optimization problems. Is the current hardware ready for production deployment?
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Research</span>
+<span class="px-2 py-0.5 rounded-full border border-grid-grey text-[10px] font-mono text-muted-grey group-hover:border-primary/50 group-hover:text-primary transition-colors cursor-default">Quantum</span>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center space-x-2">
+<button class="w-10 h-10 flex items-center justify-center border border-grid-grey bg-void-black text-muted-grey hover:border-primary hover:text-primary transition-colors font-mono text-sm rounded">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-grid-grey bg-void-black text-muted-grey hover:border-primary hover:text-primary transition-colors font-mono text-sm rounded">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-grid-grey bg-void-black text-muted-grey hover:border-primary hover:text-primary transition-colors font-mono text-sm rounded">3</button>
+<span class="w-10 h-10 flex items-center justify-center text-muted-grey font-mono text-sm">...</span>
+<button class="w-10 h-10 flex items-center justify-center border border-grid-grey bg-void-black text-muted-grey hover:border-primary hover:text-primary transition-colors font-mono text-sm rounded">Next</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-grid-grey bg-void-black py-12 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<h4 class="text-lg font-bold uppercase tracking-widest mb-4">Neev / Research</h4>
+<p class="text-muted-grey text-xs md:text-sm font-mono max-w-sm">
+                        Systematic strategies powered by rigorous data science. We build the infrastructure for the next generation of financial markets.
+                    </p>
+</div>
+<div>
+<h5 class="text-xs font-mono text-primary uppercase tracking-widest mb-4">Connect</h5>
+<ul class="space-y-2 text-sm text-muted-grey">
+<li><a class="hover:text-white transition-colors" href="#">Twitter / X</a></li>
+<li><a class="hover:text-white transition-colors" href="#">LinkedIn</a></li>
+<li><a class="hover:text-white transition-colors" href="#">GitHub</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Substack</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-xs font-mono text-primary uppercase tracking-widest mb-4">Legal</h5>
+<ul class="space-y-2 text-sm text-muted-grey">
+<li><a class="hover:text-white transition-colors" href="#">Terms of Use</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Disclosures</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-grid-grey/50 flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-gray-600 uppercase">
+<span>© 2024 Neev Research LLC. All rights reserved.</span>
+<span class="mt-2 md:mt-0">London • New York • Singapore</span>
+</div>
+</footer>
+</div>
+</body></html>

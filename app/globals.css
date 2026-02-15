@@ -2,36 +2,50 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  /* Lenis Brutalist Theme - Monochrome */
+  /* Institutional Motion Theme - Void/Neon */
   --background: #050505;
+  /* Void Black */
   --foreground: #ffffff;
 
-  --accent: #ffffff;
-  --accent-foreground: #000000;
+  --primary: #FF0080;
+  /* Electric Pink */
+  --primary-foreground: #ffffff;
 
   --muted: #121212;
-  --muted-foreground: #737373;
+  /* Charcoal */
+  --muted-foreground: #A1A1AA;
+
+  --accent: #FF0080;
+  --accent-foreground: #ffffff;
 
   --border: #262626;
+  /* Grid Grey */
   --input: #262626;
-  --ring: #ffffff;
+  --ring: #FF0080;
 
-  --radius: 0rem;
+  --radius: 0px;
+  /* Brutalist - No Radius by default */
+
+  /* Custom Data Colors */
+  --data-blue: #64FFDA;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-data-blue: var(--data-blue);
 
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
@@ -44,21 +58,28 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-white selection:text-black;
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-white;
   }
 }
 
-/* Typography Overrides for Dark Mode */
-.prose {
-  @apply text-muted-foreground;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose strong {
-  @apply text-foreground font-medium tracking-tight;
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-sans tracking-tight uppercase;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 .prose a {
