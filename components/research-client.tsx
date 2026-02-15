@@ -23,7 +23,7 @@ export function ResearchClient({ repos }: ResearchClientProps) {
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-block px-3 py-1 bg-grid-line/30 border border-grid-line rounded-full text-[10px] font-mono text-primary uppercase tracking-widest"
                     >
-                        Systematic Alpha Generation
+                        QUANTITATIVE RESEARCH ARCHIVE
                     </motion.span>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
@@ -31,7 +31,7 @@ export function ResearchClient({ repos }: ResearchClientProps) {
                         transition={{ delay: 0.1 }}
                         className="text-5xl md:text-7xl font-sans font-bold uppercase tracking-tighter leading-[0.9] max-w-4xl"
                     >
-                        RESEARCH<br />PAPERS
+                        RESEARCH<br />PAPERS<span className="text-primary">.</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -39,8 +39,8 @@ export function ResearchClient({ repos }: ResearchClientProps) {
                         transition={{ delay: 0.2 }}
                         className="font-mono text-muted-foreground text-sm md:text-base mt-4 max-w-2xl border-l-2 border-primary pl-4 py-1"
                     >
-                        Alpha Signals, Market Microstructure, & Machine Learning. <br />
-                        Deconstructing market inefficiencies through rigorous statistical analysis.
+                        Systematic market research & quantitative investigations. <br />
+                        Focused on risk, volatility, and structural market behavior.
                     </motion.p>
                 </div>
             </section>
