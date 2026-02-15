@@ -14,62 +14,76 @@ const octokit = new Octokit({
 // We can pass `request: { fetch }` to use Next.js patched fetch.
 
 export async function getPinnedRepositories(): Promise<Repository[]> {
-    // Option A: Fetch pinned via GraphQL (best for pinned)
-    // Option B: Fetch all and filter (simpler REST).
-    // The user requirement says "Pinned repositories OR Repositories tagged with...".
-    // Let's implement robust search for tagged repos as primary, since Pinned requires GraphQL complexity or specific endpoint.
-    // We'll search for user's repos with specific topics.
-
     const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "neevtajpara";
 
     try {
-        // Search for repos with topics: quant, finance, trading, research, risk
-        // We fetch user's repos sorted by pushed (most recently active).
         const response = await octokit.request("GET /users/{username}/repos", {
             username,
             sort: "pushed",
             direction: "desc",
             per_page: 100,
-            headers: {
-                "X-GitHub-Api-Version": "2022-11-28",
-            },
+            headers: { "X-GitHub-Api-Version": "2022-11-28" },
             request: {
                 fetch: (url: string, options: any) => {
-                    return fetch(url, { ...options, next: { revalidate: 60 } }); // Lower cache to 60s
+                    return fetch(url, { ...options, next: { revalidate: 60 } });
                 }
             }
         });
 
-        const relevantTopics = [
-            "quant", "finance", "ml", "trading", "research", "risk", "systematic",
-            "math", "algorithm", "hft", "options", "derivatives", "stochastic"
+        // Topics for Projects (exclude 'research' specific ones if needed, or just include general tech)
+        const projectTopics = [
+            "quant", "finance", "ml", "trading", "risk", "systematic",
+            "math", "algorithm", "hft", "options", "derivatives", "stochastic",
+            "rust", "cpp", "python", "go"
         ];
 
-        const validatedRepos = response.data
+        return response.data
             .filter((repo) => {
-                // If repo is the specific one user asked for, always include it
+                if (repo.fork) return false;
+                if (repo.topics?.includes("research-paper")) return false; // Exclude research papers
                 if (repo.name === "Black-Scholes-Merton-Model") return true;
-
-                if (repo.fork) return false; // Exclude forks usually? Let's exclude forks to keep it clean.
-
-                // Filter by topic intersection OR if it has the specific project name
-                const hasTopic = repo.topics?.some((t) => relevantTopics.includes(t));
-                return hasTopic;
+                return repo.topics?.some((t) => projectTopics.includes(t));
             })
             .map((repo) => {
-                // Zod validation
                 const result = RepositorySchema.safeParse(repo);
-                if (!result.success) {
-                    console.error(`Validation failed for repo ${repo.name}:`, result.error);
-                    return null;
-                }
-                return result.data;
+                return result.success ? result.data : null;
             })
-            .filter((repo): repo is Repository => repo !== null);
-
-        return validatedRepos.slice(0, 6); // Top 6
+            .filter((repo): repo is Repository => repo !== null)
+            .slice(0, 6);
     } catch (error) {
         console.error("GitHub API Error:", error);
-        return []; // Return empty array to not crash UI
+        return [];
+    }
+}
+
+export async function getResearchRepositories(): Promise<Repository[]> {
+    const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "neevtajpara";
+    try {
+        const response = await octokit.request("GET /users/{username}/repos", {
+            username,
+            sort: "pushed",
+            direction: "desc",
+            per_page: 100,
+            headers: { "X-GitHub-Api-Version": "2022-11-28" },
+            request: {
+                fetch: (url: string, options: any) => fetch(url, { ...options, next: { revalidate: 60 } })
+            }
+        });
+
+        return response.data
+            .filter((repo) => {
+                // Include repos tagged 'research-paper', 'notebook', 'analysis'
+                // OR specific research topics
+                const researchTopics = ["research-paper", "research", "analysis", "notebook", "model"];
+                return repo.topics?.some((t) => researchTopics.includes(t));
+            })
+            .map((repo) => {
+                const result = RepositorySchema.safeParse(repo);
+                return result.success ? result.data : null;
+            })
+            .filter((repo): repo is Repository => repo !== null);
+    } catch (error) {
+        console.error("GitHub API Error:", error);
+        return [];
     }
 }

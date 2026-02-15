@@ -8,8 +8,10 @@ export const RepositorySchema = z.object({
     homepage: z.string().nullable().optional(),
     topics: z.array(z.string()).default([]),
     stargazers_count: z.number(),
+    forks_count: z.number().default(0),
     language: z.string().nullable().optional(),
     updated_at: z.string(),
+    pushed_at: z.string().optional(),
 });
 
 export type Repository = z.infer<typeof RepositorySchema>;
