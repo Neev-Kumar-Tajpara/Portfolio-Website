@@ -15,10 +15,10 @@ export function SiteHeader() {
                     <Link href="/projects" className="hover:text-foreground transition-colors">
                         Projects
                     </Link>
-                    <Link href="https://github.com/neevtajpara" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                    <Link href="https://github.com/Neev-Kumar-Tajpara" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                         <Github className="w-4 h-4" />
                     </Link>
-                    <Link href="https://linkedin.com/in/neevtajpara" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                    <Link href="https://www.linkedin.com/in/neev-kumar-tajpara/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                         <Linkedin className="w-4 h-4" />
                     </Link>
                 </nav>
