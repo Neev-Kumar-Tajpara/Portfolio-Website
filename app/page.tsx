@@ -46,28 +46,28 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="flex flex-col">
-        {/* Section 1: Hero - Pure Black */}
-        <SectionWrapper id="hero" bgColor="bg-black">
+        {/* Section 1: Hero */}
+        <SectionWrapper id="hero">
           <HeroSection />
         </SectionWrapper>
 
-        {/* Section 2: Research - Deep Navy/Slate */}
-        <SectionWrapper id="research" bgColor="bg-slate-950">
+        {/* Section 2: Research */}
+        <SectionWrapper id="research">
           <RecentResearch papers={allPapers.slice(0, 3)} />
         </SectionWrapper>
 
-        {/* Section 3: Projects - Dark Slate/zinc */}
-        <SectionWrapper id="projects" bgColor="bg-zinc-950">
+        {/* Section 3: Projects */}
+        <SectionWrapper id="projects">
           <FeaturedProjects repos={repos} />
         </SectionWrapper>
 
-        {/* Section 4: Philosophy - Black/Void */}
-        <SectionWrapper id="philosophy" bgColor="bg-[#050505]">
+        {/* Section 4: Philosophy */}
+        <SectionWrapper id="philosophy">
           <PhilosophySection />
         </SectionWrapper>
 
-        {/* Section 5: Roadmap - Deep Neutral */}
-        <SectionWrapper id="roadmap" bgColor="bg-neutral-950">
+        {/* Section 5: Roadmap */}
+        <SectionWrapper id="roadmap">
           <RoadmapSection />
         </SectionWrapper>
       </div>

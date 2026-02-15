@@ -24,36 +24,36 @@ export async function getPinnedRepositories(): Promise<Repository[]> {
 
     try {
         // Search for repos with topics: quant, finance, trading, research, risk
-        // We fetch user's repos sorted by updated.
+        // We fetch user's repos sorted by pushed (most recently active).
         const response = await octokit.request("GET /users/{username}/repos", {
             username,
-            sort: "updated",
+            sort: "pushed",
             direction: "desc",
             per_page: 100,
             headers: {
                 "X-GitHub-Api-Version": "2022-11-28",
             },
-            // Next.js caching hook
             request: {
                 fetch: (url: string, options: any) => {
-                    return fetch(url, { ...options, next: { revalidate: 120 } });
+                    return fetch(url, { ...options, next: { revalidate: 60 } }); // Lower cache to 60s
                 }
             }
         });
 
-        const relevantTopics = ["quant", "finance", "ml", "trading", "research", "risk", "systematic"];
+        const relevantTopics = [
+            "quant", "finance", "ml", "trading", "research", "risk", "systematic",
+            "math", "algorithm", "hft", "options", "derivatives", "stochastic"
+        ];
 
         const validatedRepos = response.data
             .filter((repo) => {
-                // Filter by topic intersection
+                // If repo is the specific one user asked for, always include it
+                if (repo.name === "Black-Scholes-Merton-Model") return true;
+
+                if (repo.fork) return false; // Exclude forks usually? Let's exclude forks to keep it clean.
+
+                // Filter by topic intersection OR if it has the specific project name
                 const hasTopic = repo.topics?.some((t) => relevantTopics.includes(t));
-                // Also include if description mentions keywords? No, stick to explicit tags/structure for "System" discipline.
-                return hasTopic || repo.topics?.length ? true : false; // If explicit topics are present, maybe include?
-                // User said: "Pinned OR repositories tagged with..."
-                // Let's strict filter for now.
-                // Actually, let's just return all non-forks, sorted by date, that have *any* topics, 
-                // prioritizing the "quant" ones in UI. 
-                // Or strictly follow the tag rule.
                 return hasTopic;
             })
             .map((repo) => {
