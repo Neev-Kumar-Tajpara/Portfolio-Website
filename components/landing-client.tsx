@@ -45,7 +45,7 @@ export function LandingClient({ projectsCount, researchCount }: LandingClientPro
                         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                         className="text-primary font-sans font-black text-[12vw] leading-[0.85] tracking-tighter uppercase mix-blend-screen select-none"
                     >
-                        VOLATILITY,<br />RISK &<br />REGIME STRUCTURE.
+                        Neev Kumar<br />Tajpara
                     </motion.h1>
 
                     <motion.div
